@@ -9,17 +9,14 @@ def is_prime(n):
 def getPrime(arg):
     N = int(arg)
     primelist = [2,3]
-    len = 1
-    for x in range(5,10000,2):
-        if len < N:
-            if is_prime(x):
-                primelist.append(x)
-                len += 1
-        else:
-            break
-
-    count = primelist.__len__()
-    return primelist.pop(count-1)
+    len = 2
+    a = 5
+    while len < N:
+        if is_prime(a):
+            primelist.append(a)
+            len += 1
+        a+=2
+    return primelist.pop(N-1)
 
 if __name__ == '__main__':
     T = int(sys.stdin.readline())
