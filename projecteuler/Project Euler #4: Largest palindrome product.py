@@ -1,6 +1,7 @@
 import sys
 
 # Time out occured
+
 # if __name__ == '__main__':
 #     T = int(sys.stdin.readline())
 #     for _ in range(T):
@@ -22,9 +23,10 @@ import sys
 #         print(palindrome)
 
 
-# find all the palindrome numbers between 1011011-1000000
+# Do the bruteforce backwards
+
 def max_palindrone(n):
-    for i in range(n,101100,-1):
+    for i in range(n-1,101100,-1): #Strictly less than N
         if str(i) == str(i)[::-1] and three_digit_product(i):
             return i
 def three_digit_product(n):
