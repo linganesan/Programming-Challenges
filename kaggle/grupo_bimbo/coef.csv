@@ -1,2 +1,2 @@
 coef,log_rmse
-[['Producto_ID', 'Cliente_ID', 'Agencia_ID'], ['Producto_ID', 'Ruta_SAK']],[ 0.72287773  0.18834914  0.11464777],0.462447813855
+[['Producto_ID', 'Cliente_ID', 'Agencia_ID'], ['Producto_ID', 'Ruta_SAK']],[ 0.7229841   0.18792864  0.11687993],0.462450323903

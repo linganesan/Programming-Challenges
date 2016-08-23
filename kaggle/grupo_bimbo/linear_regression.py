@@ -11,16 +11,33 @@ def fit_coef(col_lst):
         col2 = col_lst[1]
 
         name1 = '_'.join([''.join(x.split('_')) for x in col1])
+	print('name1:')
+	print(name1)
         mean_train = train.groupby(col1)['log_demand'].mean().reset_index(name=name1)
+	print('mean_train_1:')
+	print(mean_train.head())
         merge = pd.merge(test, mean_train, how='inner', on=col1)
-
+	print('merge1:')
+	print(merge.head())
         name2 = '_'.join([''.join(x.split('_')) for x in col2])
+	print('name2')
+	print(name2)
         mean_train = train.groupby(col2)['log_demand'].mean().reset_index(name=name2)
+	print('mean_train_2:')
+	print(mean_train.head())
         merge = pd.merge(merge, mean_train, how='inner', on=col2)
+	print('merge2:')
+	print(merge.head())
 
         x1 = merge[name1].apply(np.expm1)
+	print('x1:')
+	print(x1)
         x2 = merge[name2].apply(np.expm1)
+	print('x2:')
+	print(x2)
         y = merge['log_demand']
+	print('y:')
+	print(y)
         return x1, x2, y
 
     x1, x2, y = cal_x_y(col_lst)
