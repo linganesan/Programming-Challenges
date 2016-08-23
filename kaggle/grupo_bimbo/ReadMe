@@ -1,0 +1,60 @@
+Develop a model to accurately forecast inventory demand based on the historical sales data.
+5 datasets are given:
+    train.csv — 74 millions
+    test.csv —  7 millions
+    sample_submission.csv — a sample submission file in the correct format
+    cliente_tabla.csv — client names (can be joined with train/test on Cliente_ID)
+    producto_tabla.csv — product names (can be joined with train/test on Producto_ID)
+    town_state.csv — town and state (can be joined with train/test on Agencia_ID)
+
+In this competition, you will forecast the demand of a product for a given week, at a particular store.
+We have to develop a model to accurately forecast inventory demand based on historical sales data. 
+9 weeks of sales transaction in Mexico
+
+Transaction->(sale,return)
+Demand for a product in certain week = Sales in that week - Return in next week
+
+The type of products they distribute to different regions are different. So, we can intuitively get an idea
+that to predict the demand of a certain product in a particular store,
+the region to which the store belongs to and the product's brand should be taken into consideration.
+
+
+Things to note:
+
+There may be products in the test set that don't exist in the train set.
+This is the expected behavior of inventory data, since there are new products being sold all the time.
+Your model should be able to accommodate this.
+
+There are duplicate Cliente_ID's in cliente_tabla, which means one Cliente_ID may have multiple NombreCliente that are very similar.
+This is due to the NombreCliente being noisy and not standardized in the raw data,
+so it is up to you to decide how to clean up and use this information.
+
+The adjusted demand (Demanda_uni_equil) is always >= 0 since demand should be either 0 or a positive value.
+The reason that Venta_uni_hoy - Dev_uni_proxima sometimes has negative values is that
+the returns records sometimes carry over a few weeks.
+
+
+File descriptions
+    train.csv — the training set
+    test.csv — the test set
+    sample_submission.csv — a sample submission file in the correct format
+    cliente_tabla.csv — client names (can be joined with train/test on Cliente_ID)
+    producto_tabla.csv — product names (can be joined with train/test on Producto_ID)
+    town_state.csv — town and state (can be joined with train/test on Agencia_ID)
+
+
+
+The main attributes in the train.csv file are:
+    Semana — Week number (From Thursday to Wednesday)
+    Agencia_ID — Sales Depot ID
+    Canal_ID — Sales Channel ID
+    Ruta_SAK — Route ID (Several routes = Sales Depot)
+    Cliente_ID — Client ID
+    NombreCliente — Client name
+    Producto_ID — Product ID
+    NombreProducto — Product Name
+    Venta_uni_hoy — Sales unit this week (integer)
+    Venta_hoy — Sales this week (unit: pesos)
+    Dev_uni_proxima — Returns unit next week (integer)
+    Dev_proxima — Returns next week (unit: pesos)
+    Demanda_uni_equil — Adjusted Demand (integer) (This is the target you will predict)
